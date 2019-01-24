@@ -34,16 +34,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
+    <div class="form-inline ml-3">
       <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control form-control-navbar" @keyup="searchit" v-model="search" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
+          <button class="btn btn-navbar" @click="searchit">
             <i class="fa fa-search"></i>
           </button>
         </div>
       </div>
-    </form>
+    </div>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -95,11 +95,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="./img/profile.png" class="img-circle elevation-2" alt="User Image">
+          <img src="img/profile/{{Auth::user()->photo}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">
             {{Auth::user()->name}}
+            <p>{{Auth::user()->type}}</p>
           </a>
         </div>
       </div>
@@ -119,6 +120,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </router-link>
           </li>
 
+  <!-- Hide from users -->
+          @can('isAdmin')
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cog fa-spin fa-3x fa-fw green" aria-hidden="true"></i>
@@ -142,7 +145,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
             </ul>
           </li>
-         
+          
+          <li class="nav-item">
+            <router-link to="/developer" class="nav-link">
+              <i class="nav-icon fa fa-cogs orange"></i>
+              <p>
+               Developer
+              </p>
+            </router-link>
+          </li>
+            @endcan
+
           <li class="nav-item">
             <router-link to="/profile" class="nav-link">
               <i class="nav-icon fa fa-user orange"></i>
@@ -179,8 +192,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <router-view ></router-view>
-        
+        <router-view ></router-view><!-- ProgressBar -->
+        <vue-progress-bar></vue-progress-bar>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
@@ -193,10 +206,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy;2018 <a href="#">IsoftTechn Project</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->
+
+@auth
+<<script>
+window.user = @json(auth()->user())
+</script>
+@endauth
+
 <script src="/js/app.js"></script>
 </body>
 </html>
