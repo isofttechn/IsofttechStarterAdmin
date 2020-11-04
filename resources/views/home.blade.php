@@ -15,6 +15,8 @@
                     @endif
 
                     You are logged in!
+                    <!-- <chat-app :user="{{ auth()->user() }}"></chat-app> -->
+                    
                 </div>
             </div>
         </div>

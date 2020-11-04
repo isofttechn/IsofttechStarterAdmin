@@ -1,7 +1,15 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <not-found></not-found>
+            <div class="col-md-8">
+                <div class="card card-default">
+                    <div class="card-header">Dashboar Component</div>
+
+                    <div class="card-body">
+                        I'm an Dashboar component.
+                    </div> 
+                </div>
+            </div>
         </div>
     </div>
 </template>

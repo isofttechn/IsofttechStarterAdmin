@@ -62,7 +62,7 @@
                   </button>
                 </div>
               </div>
-
+              
         <div v-if="!$gate.isAdminOrAuthor()">
             <not-found></not-found>
         </div>
@@ -95,6 +95,20 @@
               placeholder="Enter email"
                 class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
               <has-error :form="form" field="email"></has-error>
+            </div>
+
+            <div class="form-group">
+              <input v-model="form.phone" type="text" name="phone" 
+              placeholder="Enter phone number"
+                class="form-control" :class="{ 'is-invalid': form.errors.has('phone') }">
+              <has-error :form="form" field="phone"></has-error>
+            </div>
+
+            <div class="form-group">
+              <input v-model="form.title" type="text" name="title" 
+              placeholder="Enter job title"
+                class="form-control" :class="{ 'is-invalid': form.errors.has('title') }">
+              <has-error :form="form" field="title"></has-error>
             </div>
 
               <div class="form-group">
@@ -149,10 +163,15 @@
               id: '',
               name: '',
               email: '',
+              phone: '',
+              city: '',
+              state: '',
+              country: '',
+              title: '',
               password: '',
               type: '',
               bio: '',
-              photo: ''
+             
             })
           }
         },

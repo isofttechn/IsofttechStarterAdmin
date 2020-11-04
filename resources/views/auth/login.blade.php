@@ -1,73 +1,91 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Login - Isofttechn Admin</title>
+    <meta name="description" content="Free Bootstrap Theme by uicookies.com">
+    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,700">
+    <link rel="stylesheet" href="frontend/css/styles-merged.css">
+    <link rel="stylesheet" href="frontend/css/style.min.css">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+   
+  </head>
+  <body>
+  @include('frontend.header')
+  
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+<section class="probootstrap-hero probootstrap-xs-hero probootstrap-hero-colored" 
+style='background:#fff !important'>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 text-left probootstrap-hero-text item-center lead">
+            <h1 class="probootstrap-animate"
+             data-animate-effect="fadeIn"
+             style='color:#000 !important;'
+             >Login</h1>
+            
+            <form action="{{ route('login') }}" method="post" class="probootstrap-form">
+             @csrf
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" 
+                id="email"
+                 name="email"
+                 value="{{ old('email') }}" 
+                 required autofocus
+                 >
+                 @if ($errors->has('email'))
+                      <span class="help-block" role="alert">
+                          <strong>{{ $errors->first('email') }}</strong>
+                      </span>
+                  @endif
+              </div>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+              <div class="form-group">
+                <label for="name">Password</label>
+                <input type="password" class="form-control" 
+                id="password"
+                 name="password"
+                 value="{{ old('email') }}" 
+                 required autofocus
+                 >
+                 @if ($errors->has('password'))
+                      <span class="help-block" role="alert">
+                          <strong>{{ $errors->first('password') }}</strong>
+                      </span>
+                  @endif
+              </div>
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+              <div class="form-group clearfix mb40">
+                    <label for="remember" class="probootstrap-remember">
+                    <input type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                      
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                    @if (Route::has('password.request'))
+                        <a class="probootstrap-forgot" href="{{ route('password.request') }}" target="_blank">
+                            {{ __('Forgot Your Password?') }}
+                        </a>
+                    @endif
+                  </div>
+                  
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="Login">
+              </div>
+            </form>
 
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+          </div>
         </div>
-    </div>
-</div>
-@endsection
+      </div>
+    </section>
+
+@include('frontend.footer')
+
+    <script src="frontend/js/scripts.min.js"></script>
+    <script src="frontend/js/custom.min.js"></script>
+  </body>
+</html>
