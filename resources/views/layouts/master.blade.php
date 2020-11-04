@@ -84,10 +84,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{route('home')}}" class="brand-link">
+    <a href="{{('/')}}" class="brand-link">
       <img src="./img/logo.png" alt="Isofttechn Project" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Isofttechn Project</span>
+      <span class="brand-text font-weight-light">Back Home </span>
     </a>
 
     <!-- Sidebar -->
@@ -100,7 +100,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="info">
           <a href="#" class="d-block">
             {{Auth::user()->name}}
-            <p>{{Auth::user()->type}}</p>
+            <p>{{Auth::user()->title}}</p>
           </a>
         </div>
       </div>
@@ -137,12 +137,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>Users</p>
                 </router-link>
               </li>
-              <li class="nav-item">
+
+              <!-- <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Inactive Page</p>
                 </a>
-              </li>
+              </li> -->
+
+
             </ul>
           </li>
           
@@ -164,6 +167,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </router-link>
           </li>
+
+          <li class="nav-item">
+            <router-link to="/*" class="nav-link">
+              <i class="nav-icon fa fa-tachometer-alt blue"></i>
+              <p>
+               Error Page
+              </p>
+            </router-link>
+          </li>
+
           
       <li class="nav-item">
         <a class="nav-link" href="{{ route('logout') }}"
@@ -194,6 +207,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <router-view ></router-view><!-- ProgressBar -->
         <vue-progress-bar></vue-progress-bar>
+        
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->

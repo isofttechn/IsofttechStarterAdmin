@@ -54,10 +54,11 @@ let routes = [
     {path: '/Users', component:  require('./components/Users.vue').default },
     {path: '/profile', component:  require('./components/Profile.vue').default },
     {path: '/developer', component:  require('./components/developer.vue').default },
+    {path: '/messanger', component:  require('./components/Messanger').default },
     {path: '*', component:  require('./components/NotFound.vue').default }
-
-]
-
+   
+] 
+ 
 
 const router = new VueRouter({
     mode: 'history',
@@ -87,7 +88,9 @@ window.Fire = new Vue();
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('chat-app', require('./components/ChatApp.vue').default);
+//Import chat App Component
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -114,6 +117,11 @@ Vue.component(
     'not-found',
     require('./components/NotFound.vue').default
 );
+
+// Vue.component(
+//     'chat-app',
+//     require('./components/ChatApp.vue').default
+// );
 
 const app = new Vue({
     el: '#app',

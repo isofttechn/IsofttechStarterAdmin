@@ -14,7 +14,7 @@
               <!-- Add the bg color to the header using any of the bg-* classes -->
               <div class="widget-user-header text-white" style="background: url('./img/user-cover.jpg') center center;">
                 <h3 class="widget-user-username">{{this.form.name}}</h3>
-                <h5 class="widget-user-desc">{{this.form.bio}}</h5>
+                <h5 class="widget-user-desc">{{this.form.title}}</h5>
               </div>
               <div class="widget-user-image">
                 <img class="img-circle" :src="getProfilePhoto()" alt="User Avatar">
@@ -54,7 +54,7 @@
             <div class="container-fluid">
         <div class="row">
           <div class="col-md-3">
-
+ 
             <!-- Profile Image -->
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
@@ -62,9 +62,9 @@
                   <img class="profile-user-img img-fluid img-circle" :src="getProfilePhoto()" alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">Nina Mcintire</h3>
+                <h3 class="profile-username text-center">{{this.form.name}}</h3>
 
-                <p class="text-muted text-center">Software Engineer</p>
+                <p class="text-muted text-center">{{this.form.title}}</p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
@@ -265,20 +265,39 @@
                            <has-error :form="form" field="email"></has-error>
                         </div>
                       </div>
+
+                        <div class="form-group">
+                        <label for="inputPhone" class="col-sm-2 control-label">Phone Number</label>
+                        <div class="col-sm-10">
+                          <input type="text" v-model="form.phone" class="form-control" 
+                          id="inputPhone" placeholder="Enter phone number" :class="{ 'is-invalid': form.errors.has('phone') }">
+                           <has-error :form="form" field="phone"></has-error>
+                        </div>
+                      </div>
+
+                        <div class="form-group">
+                        <label for="inputTitle" class="col-sm-2 control-label">Job Title</label>
+                        <div class="col-sm-10">
+                          <input type="text" v-model="form.title" class="form-control" 
+                          id="inputTitle" placeholder="Enter job title" :class="{ 'is-invalid': form.errors.has('title') }">
+                           <has-error :form="form" field="title"></has-error>
+                        </div>
+                      </div>
                       
                       <div class="form-group">
                         <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
 
                         <div class="col-sm-10">
                           <textarea v-model="form.bio" class="form-control" 
-                           id="inputExperience" placeholder="Experience" :class="{ 'is-invalid': form.errors.has('bio') }">
+                           id="inputExperience" placeholder="Short bio" :class="{ 'is-invalid': form.errors.has('bio') }">
 
                           </textarea>
                            <has-error :form="form" field="bio"></has-error>
                         </div>
                       </div>
+
                       <div class="form-group">
-                        <label for="inputSkills" class="col-sm-2 control-label">Profile Photo</label>
+                        <label for="inputPhoto" class="col-sm-2 control-label">Profile Photo</label>
 
                         <div class="col-sm-10">
                           <input type="file" @change="updateProfile" class="form-control" id="photo" >
@@ -296,6 +315,33 @@
                         </div>
                       </div>
 
+                      <div class="form-group">
+                        <label for="inputCity" class="col-sm-2 control-label">City</label>
+                        <div class="col-sm-10">
+                          <input type="text" v-model="form.city" class="form-control" 
+                          id="inputCity" placeholder="Enter City" :class="{ 'is-invalid': form.errors.has('city') }">
+                           <has-error :form="form" field="city"></has-error>
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="inputState" class="col-sm-2 control-label">State</label>
+                        <div class="col-sm-10">
+                          <input type="text" v-model="form.state" class="form-control" 
+                          id="inputState" placeholder="Enter State" :class="{ 'is-invalid': form.errors.has('state') }">
+                           <has-error :form="form" field="state"></has-error>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="inputCountry" class="col-sm-2 control-label">Country</label>
+                        <div class="col-sm-10">
+                          <input type="text" v-model="form.country" class="form-control" 
+                          id="inputCountry" placeholder="Enter Country" :class="{ 'is-invalid': form.errors.has('country') }">
+                           <has-error :form="form" field="country"></has-error>
+                        </div>
+                      </div>
+                      
                 
                       <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
@@ -332,7 +378,12 @@
               password: '',
               type: '',
               bio: '',
-              photo: ''
+              photo: '', 
+              phone: '',
+              title: '',
+              city: '',
+              state: '',
+              country: '',
             })
         }
 
