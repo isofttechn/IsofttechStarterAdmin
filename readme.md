@@ -5,25 +5,19 @@ Admin: supper@admin.com, Password: password12345<br />
 Employee: employee2@mail.com, Password: agent12345<br />
 User: user@mail.com, Password: user12345<br />
 
-Live demo: (https://dash.chophitmusik.com/)
+Live demo: (https://dash.chophitmusik.com/)<br />
 
-How use Vue Router with Laravel
-How to Install AdminLTE 3
-How to Use Font Awesome 5 on Laravel
-How integrate mailchimp with laravel
-How to use Laravel Socialite
-How to Login Using Social Media
-How to Use API in Laravel
-Api Auth with Laravel Passport
-JWT with Laravel Passport and JavaScript Request
-Vue Custom Events
-Vue form with Laravel
-Relational Database with Laravel
-Axios and Ajax Request
-ACL in Laravel
-Online Users list
-And much more...
-Installation
+User Management<br />
+User Registration<br />
+Profile Manager<br />
+Custom User Dashboard<br />
+Instant image upload with Ajax<br />
+API Auth with Laravel passport<br />
+Developer Options for OAuth Clients<br />
+Change Password & Avatar<br />
+Instant User Seacrh<br />
+Frontend and Backend User ACL with Gate<br />
+
 It's just like any other Laravel project. Basically here is how you use it for yourself. 
 
 Clone the repo git clone (https://github.com/IsoftTech/IsofttechStarterAdmin.git)<br />
